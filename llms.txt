@@ -1,0 +1,295 @@
+# rtreeoflife
+
+`rtreeoflife` provides programmatic access to species records and
+selected FASTA files associated with the Royal Botanic Gardens, Kew Tree
+of Life Explorer. The package is designed for selective access: users
+search or match species first, then download only the FASTA files needed
+for an analysis.
+
+The package includes `tol_species`, a normalized species/specimen index
+derived from the Tree of Life species list. This makes common searches
+available without mirroring the full Kew release locally.
+
+## Installation
+
+Install the released version from CRAN with:
+
+``` r
+
+install.packages("rtreeoflife")
+```
+
+During local development, install from the package directory with:
+
+``` r
+
+install.packages(".", repos = NULL, type = "source")
+```
+
+## Data Access Model
+
+Kew release files are hosted at:
+
+``` r
+
+tol_release_url()
+```
+
+The full release contains manifests, tree files, rendered tree assets,
+and many FASTA files. Downloading the complete repository can be slow
+and storage intensive, so the recommended workflow is:
+
+1.  Search or match species in the bundled index.
+2.  Resolve FASTA URLs for the selected records.
+3.  Download to a temporary session directory.
+4.  Manipulate the parsed FASTA data as tidy list-columns.
+5.  Export FASTA files permanently only when needed.
+
+## Example
+
+This example searches three species, downloads only the available FASTA
+files, summarises the recovered sequences, visualises the result with
+`ggplot2`, builds an exploratory tree for one shared gene, and exports
+FASTA files when the user decides to keep them.
+
+``` r
+
+library(rtreeoflife)
+library(dplyr)
+library(ggplot2)
+
+targets <- c(
+  "Cnestis ferruginea",
+  "Agelaea pentagyna",
+  "Manotes expansa"
+)
+
+# Search the bundled species index.
+matches <- tol_match_species(
+  targets,
+  multiple = "best"
+)
+
+matches |>
+  select(
+    requested_name,
+    matched_name,
+    match_type,
+    has_data,
+    sequence_id,
+    no_of_genes_recovered,
+    fasta_file_url
+  )
+
+# Keep only records with FASTA availability.
+selected <- matches |>
+  filter(has_data)
+
+# Download selected FASTA files to a temporary directory.
+# Increase timeout/retries for slow network connections.
+download_plan <- tol_download_fasta(
+  selected,
+  timeout = 1200,
+  retries = 5
+)
+
+# Parse FASTA files into a tidy list-column.
+plan_nested <- download_plan |>
+  tol_attach_fasta()
+
+# Convert nested FASTA records to long tidy data.
+fasta_long <- plan_nested |>
+  tol_fasta_long()
+
+fasta_long |>
+  select(sequence_id, scientific_name, gene_id, width)
+
+# Summarise and plot recovered FASTA content.
+fasta_summary <- plan_nested |>
+  tol_fasta_summary()
+
+tol_plot_fasta_summary(fasta_summary)
+
+# Identify shared genes and build an exploratory tree.
+common_genes <- plan_nested |>
+  tol_common_genes(min_records = 2)
+
+tree_result <- plan_nested |>
+  tol_build_gene_tree(
+    gene_id = common_genes$gene_id[[1]],
+    min_records = 2
+  )
+
+tol_plot_tree(tree_result)
+
+# Export FASTA files permanently only if they should be retained.
+exported <- download_plan |>
+  tol_export_fasta(
+    dest_dir = "raw-data/fasta/by_recovery",
+    manifest_path = "raw-data/fasta/fasta_export_manifest.csv",
+    overwrite = FALSE
+  )
+
+exported |>
+  select(scientific_name, local_path, export_status)
+```
+
+## Species Search
+
+Use exact taxonomic filters when the target group is known:
+
+``` r
+
+saxifraga <- tol_search_species(
+  genus = "Saxifraga"
+)
+
+tol_plot_gene_recovery(saxifraga)
+```
+
+Use
+[`tol_match_species()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_match_species.md)
+when starting from a vector of scientific names:
+
+``` r
+
+tol_match_species(
+  c("Cnestis ferruginea", "Agelaea pentagyna", "Manotes expansa"),
+  multiple = "best"
+)
+```
+
+## Persistent Downloads
+
+By default,
+[`tol_download_fasta()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_download_fasta.md)
+stores files in a temporary session directory. This keeps exploratory
+workflows lightweight:
+
+``` r
+
+plan <- tol_download_fasta(
+  genus = "Saxifraga",
+  specific_epithet = "fortunei"
+)
+
+plan |>
+  tol_attach_fasta()
+```
+
+To keep files permanently, use
+[`tol_export_fasta()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_export_fasta.md):
+
+``` r
+
+plan |>
+  tol_export_fasta(
+    dest_dir = "raw-data/fasta/by_recovery"
+  )
+```
+
+## Release Utilities
+
+Lower level helpers are available for metadata and small scoped
+downloads:
+
+``` r
+
+tol_known_bundles()
+
+manifest_files <- tol_download_bundle("manifests")
+
+species_tree <- tol_download_bundle("species_tree")
+
+sequence_manifest <- tol_manifest(manifest_files[[1]])
+```
+
+For ordinary FASTA access, prefer the species-index workflow above
+instead of downloading complete release directories.
+
+# Package index
+
+## Configuracion y URLs
+
+Configurar rutas locales y construir URLs de releases de Kew.
+
+- [`tol_base_url()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_base_url.md)
+  : Kew Tree of Life base URL
+- [`tol_set_base_url()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_set_base_url.md)
+  : Set the Kew Tree of Life base URL for the current R session
+- [`tol_data_dir()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_data_dir.md)
+  : Local data directory for downloaded files
+- [`tol_release_url()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_release_url.md)
+  : Build a URL for a Kew Tree of Life release
+- [`tol_index()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_index.md)
+  : List files and directories in a Kew Tree of Life remote index
+
+## Indice de especies y busqueda
+
+Consultar el indice incluido y resolver especies solicitadas.
+
+- [`tol_species`](https://PaulESantos.github.io/rtreeoflife/reference/tol_species.md)
+  : Kew Tree of Life species index
+- [`tol_species_index()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_species_index.md)
+  : Read the Kew Tree of Life species index
+- [`tol_search_species()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_search_species.md)
+  : Search Kew Tree of Life species records
+- [`tol_match_species()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_match_species.md)
+  : Match requested species names against the Kew Tree of Life index
+
+## Descarga selectiva y exportacion FASTA
+
+Descargar, validar, adjuntar y guardar archivos FASTA por especie.
+
+- [`tol_resolve_fasta()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_resolve_fasta.md)
+  : Resolve FASTA download targets for selected species records
+- [`tol_download_fasta()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_download_fasta.md)
+  : Download FASTA files for selected species records
+- [`tol_attach_fasta()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_attach_fasta.md)
+  : Attach parsed FASTA data to a download plan
+- [`tol_read_fasta()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_read_fasta.md)
+  : Read a FASTA file
+- [`tol_save_fasta()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_save_fasta.md)
+  : Save downloaded FASTA files to a permanent directory
+- [`tol_export_fasta()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_export_fasta.md)
+  : Export downloaded FASTA files and a manifest
+
+## Manipulacion, visualizacion y arboles
+
+Convertir FASTA a datos tidy, resumir, graficar y construir arboles
+exploratorios.
+
+- [`tol_fasta_long()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_fasta_long.md)
+  : Convert attached FASTA data to a tidy long table
+- [`tol_fasta_summary()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_fasta_summary.md)
+  : Summarise FASTA content by species record
+- [`tol_common_genes()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_common_genes.md)
+  : Choose a gene shared by multiple downloaded FASTA files
+- [`tol_build_gene_tree()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_build_gene_tree.md)
+  : Build an illustrative tree from one shared gene
+- [`tol_plot_gene_recovery()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_plot_gene_recovery.md)
+  : Plot recovered gene counts with ggplot2
+- [`tol_plot_fasta_summary()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_plot_fasta_summary.md)
+  : Plot FASTA summary with ggplot2
+- [`tol_plot_tree()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_plot_tree.md)
+  : Plot an hclust tree with ggplot2
+
+## Utilidades de release
+
+Acceso de bajo nivel a manifiestos y bundles conocidos.
+
+- [`tol_known_bundles()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_known_bundles.md)
+  : Known download bundles
+- [`tol_known_bundle()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_known_bundle.md)
+  : Known download bundles
+- [`tol_download()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_download.md)
+  : Download files from a Kew Tree of Life release
+- [`tol_download_bundle()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_download_bundle.md)
+  : Download a predefined Kew Tree of Life bundle
+- [`tol_download_release()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_download_release.md)
+  : Download and validate a complete Kew Tree of Life release
+- [`tol_download_directory()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_download_directory.md)
+  : Download and validate one directory from a Kew Tree of Life release
+- [`tol_manifest()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_manifest.md)
+  : Read a downloaded Kew Tree of Life manifest
+
