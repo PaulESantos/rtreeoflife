@@ -1,0 +1,13 @@
+^rtreeoflife\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^README\.Rmd$
+^cran-comments\.md$
+^data-raw$
+^\.agents$
+^\.Rhistory$
+^raw-data$
+^outputs$
+^docs$
+^scripts$
+^examples$

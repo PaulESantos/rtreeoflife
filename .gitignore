@@ -1,0 +1,24 @@
+# RStudio and local R session state
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# R package build/check artifacts
+*.tar.gz
+*.Rcheck/
+
+# Local data downloads and generated analysis outputs
+raw-data/
+outputs/
+docs/
+scripts/
+
+# Large intermediate data-raw artifacts, while keeping reproducible scripts
+data-raw/current_release/
+data-raw/kew_download.log
+data-raw/kew_download_manifest.csv
+.Rproj.user
+.httr-oauth
+.DS_Store
+.quarto
