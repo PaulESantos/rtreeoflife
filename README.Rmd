@@ -36,17 +36,19 @@ Install the released version from CRAN with:
 install.packages("rtreeoflife")
 ```
 
-During local development, install from the package directory with:
 
-```{r install-local, eval = FALSE}
-install.packages(".", repos = NULL, type = "source")
+Install the development version from GitHub with:
+
+```{r install-github, eval = FALSE}
+pak::pak("PaulESantos/rtreeoflife")
 ```
 
 ## Data Access Model
 
 Kew release files are hosted at:
 
-```{r release-url, eval = FALSE}
+```{r release-url}
+library(rtreeoflife)
 tol_release_url()
 ```
 
@@ -67,8 +69,7 @@ summarises the recovered sequences, visualises the result with `ggplot2`, builds
 an exploratory tree for one shared gene, and exports FASTA files when the user
 decides to keep them.
 
-```{r workflow, eval = FALSE}
-library(rtreeoflife)
+```{r workflow}
 library(dplyr)
 library(ggplot2)
 
@@ -152,7 +153,7 @@ exported |>
 
 Use exact taxonomic filters when the target group is known:
 
-```{r search, eval = FALSE}
+```{r search}
 saxifraga <- tol_search_species(
   genus = "Saxifraga"
 )
@@ -162,7 +163,7 @@ tol_plot_gene_recovery(saxifraga)
 
 Use `tol_match_species()` when starting from a vector of scientific names:
 
-```{r match, eval = FALSE}
+```{r match}
 tol_match_species(
   c("Cnestis ferruginea", "Agelaea pentagyna", "Manotes expansa"),
   multiple = "best"
@@ -174,7 +175,7 @@ tol_match_species(
 By default, `tol_download_fasta()` stores files in a temporary session
 directory. This keeps exploratory workflows lightweight:
 
-```{r temporary-download, eval = FALSE}
+```{r temporary-download}
 plan <- tol_download_fasta(
   genus = "Saxifraga",
   specific_epithet = "fortunei"
@@ -197,7 +198,7 @@ plan |>
 
 Lower level helpers are available for metadata and small scoped downloads:
 
-```{r release-helpers, eval = FALSE}
+```{r release-helpers}
 tol_known_bundles()
 
 manifest_files <- tol_download_bundle("manifests")
