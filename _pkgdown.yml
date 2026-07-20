@@ -39,21 +39,21 @@ navbar:
     right: [search, kew_data]
   components:
     intro:
-      text: Inicio
+      text: Home
       href: index.html
     reference:
-      text: Funciones
+      text: Reference
       href: reference/index.html
     news:
-      text: Cambios
+      text: News
       href: news/index.html
     kew_data:
-      text: Datos Kew
+      text: Kew Data
       href: https://sftp.kew.org/pub/treeoflife/current_release/
 
 reference:
-- title: Configuracion y URLs
-  desc: Configurar rutas locales y construir URLs de releases de Kew.
+- title: Configuration and URLs
+  desc: Configure local paths and build URLs for Kew releases.
   contents:
   - tol_base_url
   - tol_set_base_url
@@ -61,16 +61,16 @@ reference:
   - tol_release_url
   - tol_index
 
-- title: Indice de especies y busqueda
-  desc: Consultar el indice incluido y resolver especies solicitadas.
+- title: Species Index and Search
+  desc: Query the bundled species index and resolve requested species.
   contents:
   - tol_species
   - tol_species_index
   - tol_search_species
   - tol_match_species
 
-- title: Descarga selectiva y exportacion FASTA
-  desc: Descargar, validar, adjuntar y guardar archivos FASTA por especie.
+- title: Selective FASTA Download and Export
+  desc: Download, validate, attach, and save FASTA files by species.
   contents:
   - tol_resolve_fasta
   - tol_download_fasta
@@ -79,8 +79,8 @@ reference:
   - tol_save_fasta
   - tol_export_fasta
 
-- title: Manipulacion, visualizacion y arboles
-  desc: Convertir FASTA a datos tidy, resumir, graficar y construir arboles exploratorios.
+- title: Manipulation, Visualisation, and Trees
+  desc: Convert FASTA data to tidy tables, summarise, plot, and build exploratory trees.
   contents:
   - tol_fasta_long
   - tol_fasta_summary
@@ -90,8 +90,8 @@ reference:
   - tol_plot_fasta_summary
   - tol_plot_tree
 
-- title: Utilidades de release
-  desc: Acceso de bajo nivel a manifiestos y bundles conocidos.
+- title: Release Utilities
+  desc: Low-level access to manifests and known release bundles.
   contents:
   - tol_known_bundles
   - tol_known_bundle
