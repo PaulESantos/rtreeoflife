@@ -1,8 +1,8 @@
 # Package index
 
-## Configuracion y URLs
+## Configuration and URLs
 
-Configurar rutas locales y construir URLs de releases de Kew.
+Configure local paths and build URLs for Kew releases.
 
 - [`tol_base_url()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_base_url.md)
   : Kew Tree of Life base URL
@@ -15,9 +15,9 @@ Configurar rutas locales y construir URLs de releases de Kew.
 - [`tol_index()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_index.md)
   : List files and directories in a Kew Tree of Life remote index
 
-## Indice de especies y busqueda
+## Species Index and Search
 
-Consultar el indice incluido y resolver especies solicitadas.
+Query the bundled species index and resolve requested species.
 
 - [`tol_species`](https://PaulESantos.github.io/rtreeoflife/reference/tol_species.md)
   : Kew Tree of Life species index
@@ -28,9 +28,9 @@ Consultar el indice incluido y resolver especies solicitadas.
 - [`tol_match_species()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_match_species.md)
   : Match requested species names against the Kew Tree of Life index
 
-## Descarga selectiva y exportacion FASTA
+## Selective FASTA Download and Export
 
-Descargar, validar, adjuntar y guardar archivos FASTA por especie.
+Download, validate, attach, and save FASTA files by species.
 
 - [`tol_resolve_fasta()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_resolve_fasta.md)
   : Resolve FASTA download targets for selected species records
@@ -45,10 +45,10 @@ Descargar, validar, adjuntar y guardar archivos FASTA por especie.
 - [`tol_export_fasta()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_export_fasta.md)
   : Export downloaded FASTA files and a manifest
 
-## Manipulacion, visualizacion y arboles
+## Manipulation, Visualisation, and Trees
 
-Convertir FASTA a datos tidy, resumir, graficar y construir arboles
-exploratorios.
+Convert FASTA data to tidy tables, summarise, plot, and build
+exploratory trees.
 
 - [`tol_fasta_long()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_fasta_long.md)
   : Convert attached FASTA data to a tidy long table
@@ -65,9 +65,9 @@ exploratorios.
 - [`tol_plot_tree()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_plot_tree.md)
   : Plot an hclust tree with ggplot2
 
-## Utilidades de release
+## Release Utilities
 
-Acceso de bajo nivel a manifiestos y bundles conocidos.
+Low-level access to manifests and known release bundles.
 
 - [`tol_known_bundles()`](https://PaulESantos.github.io/rtreeoflife/reference/tol_known_bundles.md)
   : Known download bundles
