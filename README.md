@@ -39,12 +39,15 @@ Kew release files are hosted at:
 
 ``` r
 library(rtreeoflife)
+<<<<<<< HEAD
 #> ── Attaching rtreeoflife ────────────────────────────────── rtreeoflife 0.1.0 ──
 #> ✔ species index       tol_species_index(), tol_match_species()
 #> ✔ selective download  tol_download_fasta(), tol_export_fasta()
 #> ✔ tidy FASTA          tol_attach_fasta(), tol_fasta_long()
 #> ✔ visualisation       tol_plot_gene_recovery(), tol_plot_tree()
 #> ℹ Data source: <https://treeoflife.kew.org/> and <https://sftp.kew.org/pub/treeoflife/current_release/>
+=======
+>>>>>>> 389cebb969d081953d4a5d25f33995e170c5b2f6
 tol_release_url()
 #> [1] "https://sftp.kew.org/pub/treeoflife/current_release/"
 ```
