@@ -1,0 +1,109 @@
+url: https://PaulESantos.github.io/rtreeoflife/
+
+template:
+  bootstrap: 5
+  bslib:
+    primary: "#008285"
+    secondary: "#034d56"
+    success: "#7a9e3f"
+    info: "#008285"
+    warning: "#ffde02"
+    danger: "#a33b20"
+    light: "#f4f3f1"
+    dark: "#262626"
+    body-color: "#262626"
+    body-bg: "#ffffff"
+    link-color: "#008285"
+    link-hover-color: "#034d56"
+    navbar-light-color: "#262626"
+    navbar-light-hover-color: "#008285"
+    navbar-light-active-color: "#008285"
+    font-family-base: "Roboto, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+    headings-font-weight: 700
+    border-radius: "0.35rem"
+  includes:
+    in_header: |
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+home:
+  title: rtreeoflife
+  description: >
+    Programmatic access to Kew Tree of Life species records, selective FASTA
+    downloads, tidy manipulation, visualisation, and exploratory tree workflows.
+
+navbar:
+  structure:
+    left: [intro, reference, news]
+    right: [search, kew_data]
+  components:
+    intro:
+      text: Inicio
+      href: index.html
+    reference:
+      text: Funciones
+      href: reference/index.html
+    news:
+      text: Cambios
+      href: news/index.html
+    kew_data:
+      text: Datos Kew
+      href: https://sftp.kew.org/pub/treeoflife/current_release/
+
+reference:
+- title: Configuracion y URLs
+  desc: Configurar rutas locales y construir URLs de releases de Kew.
+  contents:
+  - tol_base_url
+  - tol_set_base_url
+  - tol_data_dir
+  - tol_release_url
+  - tol_index
+
+- title: Indice de especies y busqueda
+  desc: Consultar el indice incluido y resolver especies solicitadas.
+  contents:
+  - tol_species
+  - tol_species_index
+  - tol_search_species
+  - tol_match_species
+
+- title: Descarga selectiva y exportacion FASTA
+  desc: Descargar, validar, adjuntar y guardar archivos FASTA por especie.
+  contents:
+  - tol_resolve_fasta
+  - tol_download_fasta
+  - tol_attach_fasta
+  - tol_read_fasta
+  - tol_save_fasta
+  - tol_export_fasta
+
+- title: Manipulacion, visualizacion y arboles
+  desc: Convertir FASTA a datos tidy, resumir, graficar y construir arboles exploratorios.
+  contents:
+  - tol_fasta_long
+  - tol_fasta_summary
+  - tol_common_genes
+  - tol_build_gene_tree
+  - tol_plot_gene_recovery
+  - tol_plot_fasta_summary
+  - tol_plot_tree
+
+- title: Utilidades de release
+  desc: Acceso de bajo nivel a manifiestos y bundles conocidos.
+  contents:
+  - tol_known_bundles
+  - tol_known_bundle
+  - tol_download
+  - tol_download_bundle
+  - tol_download_release
+  - tol_download_directory
+  - tol_manifest
+
+authors:
+  Paul E. Santos Andrade:
+    href: https://orcid.org/0000-0002-6635-0375
+
+development:
+  mode: auto
