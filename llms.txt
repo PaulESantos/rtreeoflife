@@ -301,22 +301,34 @@ source, use:
 ``` r
 
 citation("rtreeoflife")
-#> To cite package 'rtreeoflife' in publications use:
+#> To cite rtreeoflife and associated Kew Tree of Life Explorer data,
+#> please use:
 #> 
-#>   Santos Andrade P (2026). _rtreeoflife: Access Kew Tree of Life Data
-#>   Releases_. R package version 0.1.0, commit
-#>   389cebb969d081953d4a5d25f33995e170c5b2f6,
-#>   <https://github.com/PaulESantos/rtreeoflife>.
+#>   Santos Andrade, P. E. (2026). rtreeoflife: Access Kew Tree of Life
+#>   Data Releases. R package version 0.1.0.
+#>   https://github.com/PaulESantos/rtreeoflife
 #> 
-#> A BibTeX entry for LaTeX users is
+#> The species records, FASTA files, and trees accessed by this package
+#> are provided by the Royal Botanic Gardens, Kew Tree of Life Explorer.
+#> When using Kew Tree of Life Explorer data, cite the original
+#> publication and indicate the data release used.
 #> 
-#>   @Manual{,
-#>     title = {rtreeoflife: Access Kew Tree of Life Data Releases},
-#>     author = {Paul E. {Santos Andrade}},
-#>     year = {2026},
-#>     note = {R package version 0.1.0, commit 389cebb969d081953d4a5d25f33995e170c5b2f6},
-#>     url = {https://github.com/PaulESantos/rtreeoflife},
-#>   }
+#> To cite the original Kew Tree of Life Explorer data and trees, please
+#> use:
+#> 
+#>   Baker, W. J., Bailey, P., Barber, V., Barker, A., Bellot, S., Bishop,
+#>   D., Botigue, L. R., Brewer, G., Carruthers, T., Clarkson, J. J.,
+#>   Cook, J., Cowan, R. S., Dodsworth, S., Epitawalage, N., Francoso, E.,
+#>   Gallego, B., Johnson, M., Kim, J. T., Leempoel, K., Maurin, O.,
+#>   McGinnie, C., Pokorny, L., Roy, S., Stone, M., Toledo, E., Wickett,
+#>   N. J., Zuntini, A. R., Eiserhardt, W. L., Kersey, P. J., Leitch, I.
+#>   J., and Forest, F. (2022). A Comprehensive Phylogenomic Platform for
+#>   Exploring the Angiosperm Tree of Life. Systematic Biology, 71,
+#>   301-319. doi:10.1093/sysbio/syab035
+#> 
+#> To see these entries in BibTeX format, use 'print(<citation>,
+#> bibtex=TRUE)', 'toBibtex(.)', or set
+#> 'options(citation.bibtex.max=999)'.
 ```
 
 When using Kew Tree of Life Explorer data, cite the original publication
