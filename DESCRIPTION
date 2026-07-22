@@ -4,7 +4,7 @@ Version: 0.1.0
 Authors@R: 
     person(given = "Paul E.",
            family = "Santos Andrade",
-           role = c("aut", "cre"),
+           role = c("aut", "cre", "cph"),
            email = "paulefrens@gmail.com",
            comment = c(ORCID = "0000-0002-6635-0375"))
 Description: Search species and specimen records from the Royal Botanic
@@ -14,8 +14,7 @@ Description: Search species and specimen records from the Royal Botanic
     workflows with list-columns, summaries, exploratory visualisation with
     'ggplot2', and illustrative tree construction from shared genes.
 License: MIT + file LICENSE
-URL: https://PaulESantos.github.io/rtreeoflife/,
-    https://github.com/PaulESantos/rtreeoflife,
+URL: https://github.com/PaulESantos/rtreeoflife,
     https://treeoflife.kew.org/,
     https://sftp.kew.org/pub/treeoflife/current_release/
 BugReports: https://github.com/PaulESantos/rtreeoflife/issues

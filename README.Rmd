@@ -210,3 +210,14 @@ sequence_manifest <- tol_manifest(manifest_files[[1]])
 
 For ordinary FASTA access, prefer the species-index workflow above instead of
 downloading complete release directories.
+
+## Citation
+
+To cite the package and the original Kew Tree of Life Explorer data source, use:
+
+```{r citation}
+citation("rtreeoflife")
+```
+
+When using Kew Tree of Life Explorer data, cite the original publication and
+indicate the data release used in the analysis.

@@ -286,3 +286,31 @@ sequence_manifest <- tol_manifest(manifest_files[[1]])
 
 For ordinary FASTA access, prefer the species-index workflow above
 instead of downloading complete release directories.
+
+## Citation
+
+To cite the package and the original Kew Tree of Life Explorer data
+source, use:
+
+``` r
+citation("rtreeoflife")
+#> To cite package 'rtreeoflife' in publications use:
+#> 
+#>   Santos Andrade P (2026). _rtreeoflife: Access Kew Tree of Life Data
+#>   Releases_. R package version 0.1.0, commit
+#>   389cebb969d081953d4a5d25f33995e170c5b2f6,
+#>   <https://github.com/PaulESantos/rtreeoflife>.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {rtreeoflife: Access Kew Tree of Life Data Releases},
+#>     author = {Paul E. {Santos Andrade}},
+#>     year = {2026},
+#>     note = {R package version 0.1.0, commit 389cebb969d081953d4a5d25f33995e170c5b2f6},
+#>     url = {https://github.com/PaulESantos/rtreeoflife},
+#>   }
+```
+
+When using Kew Tree of Life Explorer data, cite the original publication
+and indicate the data release used in the analysis.
