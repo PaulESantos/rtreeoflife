@@ -9,6 +9,7 @@
 *.Rcheck/
 
 # Local data downloads and generated analysis outputs
+.agents/
 raw-data/
 outputs/
 docs/
