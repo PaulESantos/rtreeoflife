@@ -74,7 +74,7 @@
 </h2>
 <p>Kew release files are hosted at:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://PaulESantos.github.io/rtreeoflife/">rtreeoflife</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PaulESantos/rtreeoflife" class="external-link">rtreeoflife</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── Attaching rtreeoflife ────────────────────────────────── rtreeoflife 0.1.0 ──</span></span>
 <span><span class="co">#&gt; ✔ species index       tol_species_index(), tol_match_species()</span></span>
 <span><span class="co">#&gt; ✔ selective download  tol_download_fasta(), tol_export_fasta()</span></span>
@@ -295,6 +295,30 @@
 <span><span class="va">sequence_manifest</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tol_manifest.html">tol_manifest</a></span><span class="op">(</span><span class="va">manifest_files</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <p>For ordinary FASTA access, prefer the species-index workflow above instead of downloading complete release directories.</p>
 </div>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<p>To cite the package and the original Kew Tree of Life Explorer data source, use:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"rtreeoflife"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; To cite package 'rtreeoflife' in publications use:</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Santos Andrade P (2026). _rtreeoflife: Access Kew Tree of Life Data</span></span>
+<span><span class="co">#&gt;   Releases_. R package version 0.1.0, commit</span></span>
+<span><span class="co">#&gt;   389cebb969d081953d4a5d25f33995e170c5b2f6,</span></span>
+<span><span class="co">#&gt;   &lt;https://github.com/PaulESantos/rtreeoflife&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Manual{,</span></span>
+<span><span class="co">#&gt;     title = {rtreeoflife: Access Kew Tree of Life Data Releases},</span></span>
+<span><span class="co">#&gt;     author = {Paul E. {Santos Andrade}},</span></span>
+<span><span class="co">#&gt;     year = {2026},</span></span>
+<span><span class="co">#&gt;     note = {R package version 0.1.0, commit 389cebb969d081953d4a5d25f33995e170c5b2f6},</span></span>
+<span><span class="co">#&gt;     url = {https://github.com/PaulESantos/rtreeoflife},</span></span>
+<span><span class="co">#&gt;   }</span></span></code></pre></div>
+<p>When using Kew Tree of Life Explorer data, cite the original publication and indicate the data release used in the analysis.</p>
+</div>
 </div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
@@ -324,7 +348,7 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://orcid.org/0000-0002-6635-0375" class="external-link">Paul E. Santos Andrade</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-6635-0375" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<a href="https://orcid.org/0000-0002-6635-0375" class="external-link">Paul E. Santos Andrade</a> <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-6635-0375" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 </ul>
 </div>
 
