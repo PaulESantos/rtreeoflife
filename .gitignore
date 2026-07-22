@@ -15,7 +15,8 @@ outputs/
 docs/
 scripts/
 
-# Large intermediate data-raw artifacts, while keeping reproducible scripts
+# Large intermediate data-raw artifacts,
+# while keeping reproducible scripts
 data-raw/current_release/
 data-raw/kew_download.log
 data-raw/kew_download_manifest.csv
@@ -23,3 +24,4 @@ data-raw/kew_download_manifest.csv
 .httr-oauth
 .DS_Store
 .quarto
+
