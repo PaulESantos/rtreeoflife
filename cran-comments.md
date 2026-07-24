@@ -4,11 +4,13 @@ Local check run on Windows 11 x64 with R 4.6.1 and CRAN incoming checks:
 
 0 errors | 0 warnings | 1 note
 
-* This is a new submission.
+* This is a new submission. The spelling note previously reported for
+  DESCRIPTION has been resolved by avoiding project-specific proper nouns and
+  acronyms in the DESCRIPTION text.
 
 ## Additional checks
 
-* `devtools::test()`: 58 passed, 0 failed.
+* `devtools::test()`: 64 passed, 0 failed.
 * `urlchecker::url_check()`: all URLs are correct.
 
 ## Method References

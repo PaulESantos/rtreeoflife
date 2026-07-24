@@ -1,5 +1,5 @@
 Package: rtreeoflife
-Title: Access Kew Tree of Life Data Releases
+Title: Access Tree of Life Data Releases
 Version: 0.1.0
 Authors@R: 
     person(given = "Paul E.",
@@ -8,11 +8,11 @@ Authors@R:
            email = "paulefrens@gmail.com",
            comment = c(ORCID = "0000-0002-6635-0375"))
 Description: Search species and specimen records from the Royal Botanic
-    Gardens, Kew Tree of Life Explorer and retrieve selected genomic sequence
-    files. Provides a bundled species index, tools for matching scientific
-    names, and selective download helpers for FASTA files. Supports tidy data
-    workflows with list-columns, summaries, exploratory visualisation with
-    'ggplot2', and illustrative tree construction from shared genes.
+    Gardens Tree of Life Explorer and retrieve selected genomic sequence files.
+    Provides a bundled species index, tools for matching scientific names, and
+    selective download helpers for sequence files. Supports tidy data workflows
+    with list-columns, summaries, exploratory visualisation with 'ggplot2', and
+    illustrative tree construction from shared genes.
 License: MIT + file LICENSE
 URL: https://github.com/PaulESantos/rtreeoflife,
     https://treeoflife.kew.org/,
