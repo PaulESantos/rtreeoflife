@@ -11,3 +11,6 @@
 ^docs$
 ^scripts$
 ^examples$
+^_pkgdown\.yml$
+^pkgdown$
+^\.github$
